@@ -1,0 +1,24 @@
+{
+  "name": "test-rel",
+  "version": "0.0.0",
+  "description": "testing releases",
+  "main": "index.js",
+  "scripts": {
+    "dev": "npm run build -- --watch",
+    "build": "rm -rf dist && mkdir dist && ./node_modules/.bin/babel --verbose src --out-dir dist",
+    "format": "prettier --write src/*.js src/*/*.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/cli": "^7.7.5",
+    "@babel/core": "^7.7.5",
+    "@babel/preset-env": "^7.7.6",
+    "prettier": "^1.19.1"
+  },
+  "dependencies": {
+    "@babel/polyfill": "^7.7.0",
+    "yargs": "^15.0.2"
+  }
+}
