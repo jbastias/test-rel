@@ -14,6 +14,7 @@ const argv = yargs
 
 const run = ({ foobar }) => {
   console.log(foobar || 'xxx');
+  console.log(`new shit!!!`);
 };
 
 (async () => {
