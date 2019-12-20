@@ -29,7 +29,7 @@ test('good with nothing', () => {
 
 test('ugly', () => {
   const foobar = '123';
-  expect(gouglyod({ foobar })).toEqual(foobar);
+  expect(ugly({ foobar })).toEqual(foobar);
 });
 
 test('ugly with nothing', () => {
