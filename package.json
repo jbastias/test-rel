@@ -1,13 +1,16 @@
 {
   "name": "test-rel",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "testing releases",
   "main": "index.js",
+  "bin": {
+    "test-rel": "test-rel"
+  },
   "scripts": {
     "dev": "npm run build -- --watch",
     "build": "rm -rf dist && mkdir dist && ./node_modules/.bin/babel --verbose src --out-dir dist",
     "format": "prettier --write src/*.js src/*/*.js",
-    "test": "jest"
+    "test": "jest ./src"
   },
   "keywords": [],
   "author": "",
