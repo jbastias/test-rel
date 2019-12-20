@@ -16,6 +16,8 @@ const argv = yargs
   let options = null;
   if (argv.foobar) {
     options = { foobar: argv.foobar };
+  } else {
+    options = { foobar: 'test' };
   }
 
   const foobar = await run(options || {});
