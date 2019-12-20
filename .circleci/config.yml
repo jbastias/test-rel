@@ -36,15 +36,15 @@ jobs:
   #         name: Execute Linter
   #         command: npm run lint
 
-  # unit-test:
-  #   <<: *defaults
-  #   resource_class: medium+
-  #   steps:
-  #     - attach_workspace:
-  #         at: ~/tmp
-  #     - run:
-  #         name: Run Unit Tests
-  #         command: npm run test:ci
+  test:
+    <<: *defaults
+    resource_class: medium+
+    steps:
+      - attach_workspace:
+          at: ~/tmp
+      - run:
+          name: Run Unit Tests
+          command: npm run test
 
   build:
     <<: *defaults
@@ -66,12 +66,12 @@ workflows:
       # - lint:
       #     requires:
       #       - checkout
-      # - unit-test:
-      #     requires:
-      #       - checkout
-      - build:
+      - test:
           requires:
             - checkout
+      - build:
+          requires:
+            - test
           # filters:
           #   branches:
           #     only:
