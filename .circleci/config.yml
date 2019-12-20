@@ -38,7 +38,6 @@ jobs:
 
   test:
     <<: *defaults
-    resource_class: medium+
     steps:
       - attach_workspace:
           at: ~/tmp
