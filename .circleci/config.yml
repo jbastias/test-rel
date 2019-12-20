@@ -52,7 +52,7 @@ jobs:
       - attach_workspace:
           at: ~/tmp
       - run:
-          name: build angular app
+          name: build app
           command: npm run build
       - persist_to_workspace:
           root: .
