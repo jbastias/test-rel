@@ -1,4 +1,4 @@
-import { run } from './index';
+import { run, bad } from './index';
 
 test('run', () => {
   const foobar = '123';
@@ -7,4 +7,13 @@ test('run', () => {
 
 test('run with nothing', () => {
   expect(run({})).toEqual('test');
+});
+
+test('bad', () => {
+  const foobar = '123';
+  expect(bad({ foobar })).toEqual(foobar);
+});
+
+test('bad with nothing', () => {
+  expect(bad({})).toEqual('test');
 });
