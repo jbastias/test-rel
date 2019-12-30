@@ -35,7 +35,9 @@ jobs:
             - ~/.cache/npm
       - persist_to_workspace:
           root: .
-          paths: .
+          paths:
+            - .
+            - /tmp/temp-files
 
   lint:
     <<: *defaults
