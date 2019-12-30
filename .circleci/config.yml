@@ -45,7 +45,7 @@ jobs:
           root: .
           paths:
             - .
-            - /tmp/temp-files
+            # - /tmp/temp-files
 
   lint:
     <<: *defaults
