@@ -16,6 +16,14 @@ jobs:
           keys:
             - npm-cache-{{ .Branch }}-{{ checksum "package-lock.json" }}
       - run:
+          name: fs info
+          command: |
+            pwd
+            ls -trl /
+            ls -trl /tmp
+            ls -trl
+
+      - run:
           name: Install Dependencies
           command: npm install
       - run:
@@ -48,8 +56,12 @@ jobs:
           name: Execute Linter
           command: npm run lint
       - run:
-          name: ls temp files
-          command: ls -trl /tmp
+          name: fs info
+          command: |
+            pwd
+            ls -trl /
+            ls -trl /tmp
+            ls -trl
 
   test:
     <<: *defaults
