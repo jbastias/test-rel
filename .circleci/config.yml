@@ -36,6 +36,10 @@ jobs:
             touch /tmp/temp-files/three
             ls -ltr /tmp/temp-files
             mv /tmp/temp-files ~/
+            echo ""
+            ls -ltr ~/tmp
+            echo ""
+            ls -ltr ~/tmp
 
       - save_cache:
           name: Save NPM Package Cache
@@ -60,9 +64,14 @@ jobs:
           name: fs info
           command: |
             pwd
+            echo ""
             ls -trl /
+            echo ""
             ls -trl /tmp
+            echo ""
             ls -trl
+            echo ""
+            ls -trl ~/tmp
 
   test:
     <<: *defaults
