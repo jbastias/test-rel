@@ -18,6 +18,16 @@ jobs:
       - run:
           name: Install Dependencies
           command: npm install
+      - run:
+          name: create some tmp files
+          command: |
+            echo Running test
+            mkdir -p /tmp/temp-files
+            touch /tmp/temp-files/one
+            touch /tmp/temp-files/two
+            touch /tmp/temp-files/three
+            ls -ltr /tmp/temp-files
+
       - save_cache:
           name: Save NPM Package Cache
           key: npm-cache-{{ .Branch }}-{{ checksum "package-lock.json" }}
@@ -35,6 +45,9 @@ jobs:
       - run:
           name: Execute Linter
           command: npm run lint
+      - run:
+          name: ls temp files
+          command: ls -trl /tmp
 
   test:
     <<: *defaults
@@ -79,43 +92,3 @@ workflows:
           #     only:
           #       - master
 
-# version: 2
-# jobs:
-#   build:
-#     docker:
-#       # specify the version you desire here
-#       - image: circleci/node:lts
-
-#       # Specify service dependencies here if necessary
-#       # CircleCI maintains a library of pre-built images
-#       # documented at https://circleci.com/docs/2.0/circleci-images/
-#       # - image: circleci/mongo:3.4.4
-
-#     working_directory: ~/tmp
-
-#     steps:
-#       - checkout
-
-#       # Download and cache dependencies
-#       # - restore_cache:
-#       #     keys:
-#       #       - v1-dependencies-{{ checksum "package.json" }}
-#       #       # fallback to using the latest cache if no exact match is found
-#       #       - v1-dependencies-
-
-#       - run: npm run install
-
-#       # - save_cache:
-#       #     paths:
-#       #       - node_modules
-#       #     key: v1-dependencies-{{ checksum "package.json" }}
-
-#       # run tests!
-#       # - run: yarn test
-
-
-# workflows:
-#   version: 2
-#   test-rel:
-#     jobs:
-#       - build
