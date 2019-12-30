@@ -35,9 +35,9 @@ jobs:
             touch /tmp/temp-files/two
             touch /tmp/temp-files/three
             ls -ltr /tmp/temp-files
-            mv /tmp/temp-files ~/
+            mv /tmp/temp-files ~/tmp
             echo ""
-            ls -ltr ~/tmp
+            ls -ltr ~/
             echo ""
             ls -ltr ~/tmp
 
