@@ -27,14 +27,14 @@ jobs:
           root: .
           paths: .
 
-  # lint:
-  #   <<: *defaults
-  #   steps:
-  #     - attach_workspace:
-  #         at: ~/tmp
-  #     - run:
-  #         name: Execute Linter
-  #         command: npm run lint
+  lint:
+    <<: *defaults
+    steps:
+      - attach_workspace:
+          at: ~/tmp
+      - run:
+          name: Execute Linter
+          command: npm run lint
 
   test:
     <<: *defaults
@@ -65,9 +65,9 @@ workflows:
   test-rel:
     jobs:
       - checkout
-      # - lint:
-      #     requires:
-      #       - checkout
+      - lint:
+          requires:
+            - checkout
       - test:
           requires:
             - checkout
