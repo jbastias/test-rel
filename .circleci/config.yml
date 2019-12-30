@@ -35,6 +35,7 @@ jobs:
             touch /tmp/temp-files/two
             touch /tmp/temp-files/three
             ls -ltr /tmp/temp-files
+            mv /tmp/temp-files ~/
 
       - save_cache:
           name: Save NPM Package Cache
