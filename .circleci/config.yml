@@ -16,8 +16,31 @@ jobs:
           keys:
             - npm-cache-{{ .Branch }}-{{ checksum "package-lock.json" }}
       - run:
+          name: fs info
+          command: |
+            pwd
+            ls -trl /
+            ls -trl /tmp
+            ls -trl
+
+      - run:
           name: Install Dependencies
           command: npm install
+      - run:
+          name: create some tmp files
+          command: |
+            echo Running test
+            mkdir -p /tmp/temp-files
+            touch /tmp/temp-files/one
+            touch /tmp/temp-files/two
+            touch /tmp/temp-files/three
+            ls -ltr /tmp/temp-files
+            mv /tmp/temp-files ~/tmp
+            echo ""
+            ls -ltr ~/
+            echo ""
+            ls -ltr ~/tmp
+
       - save_cache:
           name: Save NPM Package Cache
           key: npm-cache-{{ .Branch }}-{{ checksum "package-lock.json" }}
@@ -25,16 +48,30 @@ jobs:
             - ~/.cache/npm
       - persist_to_workspace:
           root: .
-          paths: .
+          paths:
+            - .
+            # - /tmp/temp-files
 
-  # lint:
-  #   <<: *defaults
-  #   steps:
-  #     - attach_workspace:
-  #         at: ~/tmp
-  #     - run:
-  #         name: Execute Linter
-  #         command: npm run lint
+  lint:
+    <<: *defaults
+    steps:
+      - attach_workspace:
+          at: ~/tmp
+      - run:
+          name: Execute Linter
+          command: npm run lint
+      - run:
+          name: fs info
+          command: |
+            pwd
+            echo ""
+            ls -trl /
+            echo ""
+            ls -trl /tmp
+            echo ""
+            ls -trl
+            echo ""
+            ls -trl ~/tmp
 
   test:
     <<: *defaults
@@ -65,9 +102,9 @@ workflows:
   test-rel:
     jobs:
       - checkout
-      # - lint:
-      #     requires:
-      #       - checkout
+      - lint:
+          requires:
+            - checkout
       - test:
           requires:
             - checkout
@@ -79,43 +116,3 @@ workflows:
           #     only:
           #       - master
 
-# version: 2
-# jobs:
-#   build:
-#     docker:
-#       # specify the version you desire here
-#       - image: circleci/node:lts
-
-#       # Specify service dependencies here if necessary
-#       # CircleCI maintains a library of pre-built images
-#       # documented at https://circleci.com/docs/2.0/circleci-images/
-#       # - image: circleci/mongo:3.4.4
-
-#     working_directory: ~/tmp
-
-#     steps:
-#       - checkout
-
-#       # Download and cache dependencies
-#       # - restore_cache:
-#       #     keys:
-#       #       - v1-dependencies-{{ checksum "package.json" }}
-#       #       # fallback to using the latest cache if no exact match is found
-#       #       - v1-dependencies-
-
-#       - run: npm run install
-
-#       # - save_cache:
-#       #     paths:
-#       #       - node_modules
-#       #     key: v1-dependencies-{{ checksum "package.json" }}
-
-#       # run tests!
-#       # - run: yarn test
-
-
-# workflows:
-#   version: 2
-#   test-rel:
-#     jobs:
-#       - build
