@@ -1,5 +1,5 @@
 export const run = ({ foobar = 'test' }) => {
-  console.log('testing 6 comment on different branch');
+  console.log('testing 7 comment on different branch');
   return foobar;
 };
 
