@@ -108,12 +108,18 @@ jobs:
       - run:
           name: build app
           command: npm run build
-      - run:
-          name: deploy to npm
-          command: npx semantic-release
       - persist_to_workspace:
           root: .
           paths: .
+
+  deploy:
+    <<: *defaults
+    steps:
+      - attach_workspace:
+          at: ~/tmp
+      - run:
+          name: deploy to npm
+          command: npx semantic-release
 
 workflows:
   version: 2
@@ -133,8 +139,10 @@ workflows:
           requires:
             - test
             - latest-version
-          # filters:
-          #   branches:
-          #     only:
-          #       - master
-
+      - deploy:
+          requires:
+            - build
+          filters:
+            branches:
+              only:
+                - master
