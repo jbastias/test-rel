@@ -2,12 +2,15 @@
 
 set -eo pipefail
 
-# VERSION="v$1-pre" && \
-# echo "ver: $VERSION"
+VERSION="v$1" && \
+echo "ver: $VERSION"
 
 # npm publish --tag $VERSION
 
 echo "$@"
 
-exit 1
+git tag -d $VERSION && \
+git push --delete origin $VERSION
+
+# exit 1
 # exit 0
