@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-set -eo pipefail
+# set -eo pipefail
 
 VERSION="v$1" && \
 echo "ver: $VERSION"
@@ -9,6 +9,12 @@ echo "ver: $VERSION"
 
 echo "$@"
 
+# ls me-so-solly
+
+ls -l
+
+echo "$?"
+
 # rm -rf ~/.ssh > /dev/null
 
 # mkdir ~/.ssh/ && echo -e "Host github.com\n\tStrictHostKeyChecking no\n" > ~/.ssh/config
@@ -16,4 +22,4 @@ echo "$@"
 # git tag -d $VERSION && \
 # git push --delete origin $VERSION
 
-exit 1
+# exit 1

@@ -122,9 +122,7 @@ jobs:
           command: npm config set "//registry.npmjs.org/:_authToken" $NPM_TOKEN
       - run:
           name: deploy to npm
-          command: |
-            npx semantic-release
-            echo "SUCCESS: $?"
+          command: npx semantic-release
 
 workflows:
   version: 2
