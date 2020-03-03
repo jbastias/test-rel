@@ -126,9 +126,13 @@ workflows:
       - test:
           requires:
             - checkout
+      - latest-version:
+          requires:
+            - checkout
       - build:
           requires:
             - test
+            - latest-version
           # filters:
           #   branches:
           #     only:
