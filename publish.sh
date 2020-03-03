@@ -5,6 +5,8 @@ set -eo pipefail
 VERSION="$1" && \
 echo $VERSION
 
-npx semantic-release
+echo 'foobar'
 
-return -1
+# exit 1
+
+exit 0
