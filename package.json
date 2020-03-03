@@ -23,6 +23,7 @@
     "@babel/preset-env": "^7.7.6",
     "@commitlint/cli": "^8.2.0",
     "@commitlint/config-conventional": "^8.2.0",
+    "@semantic-release/exec": "^5.0.0",
     "commitizen": "^4.0.3",
     "cz-conventional-changelog": "^3.0.2",
     "eslint": "^6.7.2",
@@ -60,5 +61,20 @@
       "prettier --write",
       "git add"
     ]
+  },
+  "release": {
+    "plugins": [
+      "@semantic-release/commit-analyzer",
+      "@semantic-release/release-notes-generator",
+      [
+        "@semantic-release/exec",
+        {
+          "publishCmd": "./publish.sh",
+          "failCmd": "./fail.sh ${nextRelease.version}"
+        }
+      ],
+      "@semantic-release/github"
+    ]
   }
+
 }
