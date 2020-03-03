@@ -7,7 +7,7 @@ echo $VERSION
 
 echo 'foobar'
 
-npm publish
+npm publish --tag $VERSION
 
 # exit 1
 # exit 0
