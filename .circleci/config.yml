@@ -82,6 +82,24 @@ jobs:
           name: Run Unit Tests
           command: npm run test
 
+  latest-version:
+    <<: *defaults
+    steps:
+      - attach_workspace:
+          at: ~/tmp
+      - run:
+          name: Avoid hosts unknown for github
+          command: mkdir ~/.ssh/ && echo -e "Host github.com\n\tStrictHostKeyChecking no\n" > ~/.ssh/config
+      - run:
+          name: Get latest version
+          command: |
+              git fetch --all
+              git describe --abbrev=0 --tags $(git rev-list --tags --max-count=1) | tail -n 1 | sed "s/^v//" > ___LATEST_VERSION___
+              cat ___LATEST_VERSION___
+      - persist_to_workspace:
+          root: .
+          paths: .
+
   build:
     <<: *defaults
     steps:
@@ -90,9 +108,9 @@ jobs:
       - run:
           name: build app
           command: npm run build
-      - run:
-          name: deploy to npm
-          command: npx semantic-release
+      # - run:
+      #     name: deploy to npm
+      #     command: npx semantic-release
       - persist_to_workspace:
           root: .
           paths: .
@@ -108,9 +126,13 @@ workflows:
       - test:
           requires:
             - checkout
+      - latest-version:
+          requires:
+            - checkout
       - build:
           requires:
             - test
+            - latest-version
           # filters:
           #   branches:
           #     only:
