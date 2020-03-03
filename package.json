@@ -1,6 +1,6 @@
 {
   "name": "test-rel",
-  "version": "1.1.1",
+  "version": "0.0.0-development",
   "description": "testing releases",
   "main": "index.js",
   "bin": {
