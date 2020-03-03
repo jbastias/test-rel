@@ -2,7 +2,7 @@
 
 set -eo pipefail
 
-VERSION="$1" && \
+VERSION="v$1" && \
 echo $VERSION
 
 echo 'foobar'
