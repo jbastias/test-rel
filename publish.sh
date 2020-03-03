@@ -2,10 +2,8 @@
 
 set -eo pipefail
 
-VERSION="v$1-beta" && \
-echo $VERSION
-
-echo 'foobar'
+VERSION="v$1-pre" && \
+echo "ver: $VERSION"
 
 npm publish --tag $VERSION
 
