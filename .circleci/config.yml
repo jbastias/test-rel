@@ -123,7 +123,7 @@ jobs:
       - run:
           name: deploy to npm
           command: |
-            SUCCESS=`npx semantic-release`
+            SUCCESS=`npx semantic-release` && \
             echo "SUCCESS: $SUCCESS"
 
 workflows:
