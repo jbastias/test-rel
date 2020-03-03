@@ -5,9 +5,5 @@ set -eo pipefail
 VERSION="$1" && \
 echo $VERSION
 
-echo 'foobar'
-
-npm publish
-
-# exit 1
-# exit 0
+git tag -d $VERSION && \
+git push --delete origin $VERSION
