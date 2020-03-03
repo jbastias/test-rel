@@ -9,9 +9,9 @@ echo "ver: $VERSION"
 
 echo "$@"
 
-# ls me-so-solly
+ls me-so-solly
 
-ls -l
+# ls -l
 
 echo "$?"
 
