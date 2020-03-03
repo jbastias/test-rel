@@ -9,12 +9,12 @@ echo "ver: $VERSION"
 
 echo "$@"
 
-rm -rf ~/.ssh > /dev/null
+# rm -rf ~/.ssh > /dev/null
 
-mkdir ~/.ssh/ && echo -e "Host github.com\n\tStrictHostKeyChecking no\n" > ~/.ssh/config
+# mkdir ~/.ssh/ && echo -e "Host github.com\n\tStrictHostKeyChecking no\n" > ~/.ssh/config
 
-git tag -d $VERSION && \
-git push --delete origin $VERSION
+# git tag -d $VERSION && \
+# git push --delete origin $VERSION
 
 # exit 1
 # exit 0
