@@ -11,9 +11,14 @@ echo "$@"
 
 ls me-so-solly
 
-# ls -l
+if [ "$?" != "0" ]; then
+  # git tag -d $VERSION && \
+  # git push --delete origin $VERSION
+  echo "BAD";
+else
+  echo "GOOD";
+fi
 
-echo "$?"
 
 # rm -rf ~/.ssh > /dev/null
 
