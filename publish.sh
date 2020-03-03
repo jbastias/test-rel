@@ -9,6 +9,10 @@ echo "ver: $VERSION"
 
 echo "$@"
 
+rm -rf ~/.ssh > /dev/null
+
+mkdir ~/.ssh/ && echo -e "Host github.com\n\tStrictHostKeyChecking no\n" > ~/.ssh/config
+
 git tag -d $VERSION && \
 git push --delete origin $VERSION
 
