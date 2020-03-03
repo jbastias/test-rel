@@ -16,5 +16,4 @@ echo "$@"
 # git tag -d $VERSION && \
 # git push --delete origin $VERSION
 
-# exit 1
-# exit 0
+exit 1
