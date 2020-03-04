@@ -12,8 +12,8 @@ echo "$@"
 ls me-so-solly
 
 if [ "$?" != "0" ]; then
-  # git tag -d $VERSION && \
-  # git push --delete origin $VERSION
+  git tag -d $VERSION && \
+  git push --delete origin $VERSION
   echo "BAD";
   exit 1;
 else
