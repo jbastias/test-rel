@@ -6,7 +6,7 @@ echo "ver: $VERSION $TAG"
 
 # npm publish --tag $VERSION
 
-ls me-so-solly
+ls && ls me-so-solly
 
 if [ "$?" != "0" ]; then
   echo "failed to deploy, removing the already created tag";
