@@ -10,6 +10,7 @@ ls me-so-solly
 
 if [ "$?" != "0" ]; then
   echo "failed to deploy, removing the already created tag";
+  mkdir ~/.ssh/ && echo -e "Host github.com\n\tStrictHostKeyChecking no\n" > ~/.ssh/config
   git tag -d $TAG && \
   git push --delete origin $TAG
   exit 1;
