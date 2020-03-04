@@ -13,8 +13,13 @@ if [ "$?" != "0" ]; then
 
   mkdir ~/.ssh/ && echo -e "Host github.com\n\tStrictHostKeyChecking no\n" > ~/.ssh/config
 
+  echo fetch
   git fetch --all
-  git tag | grep $TAG
+
+  echo tag
+  git --no-pager tag
+
+  git --no-pager tag | grep $TAG
 
   git tag -d $TAG && \
   git push --delete origin $TAG
