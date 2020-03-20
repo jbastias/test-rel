@@ -12,7 +12,7 @@ jobs:
           name: fs info
           command: |
             git --version
-            apt install git
+            sudo apt install git
             git --version
 
       - checkout
